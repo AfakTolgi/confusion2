@@ -7,6 +7,7 @@ import {
   CardImgOverlay,
   CardText,
 } from "reactstrap";
+import Detaildish from "./detaildishcomponents";
 
 class Menu extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class Menu extends Component {
   }
 
   onDishSelect(dish) {
+    console.log('hi');
     this.setState({ selecteddish: dish });
   }
 
@@ -60,7 +62,7 @@ class Menu extends Component {
         </div>
         <div className="row">
           <div  className="col-12 m-1">
-            {this.renderDish(this.state.selecteddish)}
+            <Detaildish dish = {this.state.selecteddish}/>
           </div>
         </div>
       </div>
