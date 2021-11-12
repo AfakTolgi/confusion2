@@ -34,20 +34,22 @@ class Detaildish extends Component{
         );
       });
       return(
-        <div className="row">
-          <div className="col-12 col-md-5 m-1">
-            <Card>
-              <CardImg top src={this.props.dish.image} alt={this.props.dish.name} />
-              <CardBody>
-                <CardTitle>{this.props.dish.name}</CardTitle>
-                <CardText>{this.props.dish.description}</CardText>
-              </CardBody>
-            </Card>
-          </div>
-          <div className='col-12 col-md-5 m-1'>
-            <h4>Comments</h4>
-            {Comments}
-      
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-5 m-1">
+              <Card>
+                <CardImg top src={this.props.dish.image} alt={this.props.dish.name} />
+                <CardBody>
+                  <CardTitle>{this.props.dish.name}</CardTitle>
+                  <CardText>{this.props.dish.description}</CardText>
+                </CardBody>
+              </Card>
+            </div>
+            <div className='col-12 col-md-5 m-1'>
+              <h4>Comments</h4>
+              {Comments}
+        
+            </div>
           </div>
         </div>
         
