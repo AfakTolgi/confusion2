@@ -1,7 +1,9 @@
 import './App.css';
-import {Navbar, NavbarBrand} from 'reactstrap';
 import React, {Component} from "react";
 import Main from './components/Maincomponent';
+import 'font-awesome/css/font-awesome.css';
+import 'bootstrap-social/bootstrap-social.css';
+
 
 class App extends Component{
 
