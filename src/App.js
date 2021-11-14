@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import Main from './components/Maincomponent';
 import 'font-awesome/css/font-awesome.css';
 import 'bootstrap-social/bootstrap-social.css';
+import {BrowserRouter} from 'react-router-dom';
 
 
 class App extends Component{
@@ -16,9 +17,12 @@ class App extends Component{
   render(){
 
     return(
-      <div>
-        <Main/>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Main/>
+        </div>
+      </BrowserRouter>
+      
     );
 
   }
