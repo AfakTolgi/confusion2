@@ -32,7 +32,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
     );
   }
 
-  function RenderComments({dishcomments}) {
+  function RenderComments({dishcomments,addComment, dishId}) {
     const Comments = dishcomments.map((commentss)=>{
       return (
         <ul class = "list-unstyled">
@@ -55,7 +55,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
       <div className='col-12 col-md-5 m-1'>
         <h4>Comments</h4>
         {Comments}
-        <CommentForm/>
+        <CommentForm dishId={dishId} addComment={addComment}/>
 
       </div>
     );
@@ -79,7 +79,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
           </div>
           <div className="row">
             <RenderDish dish={props.dish}/>
-            <RenderComments dishcomments={props.comments}/>
+            <RenderComments dishcomments={props.comments} addComment={props.addComment} dishId={props.dish.id}/>
           </div>
         </div>
         
@@ -113,8 +113,8 @@ class CommentForm extends Component{
   }
   handleSubmit(values){
     this.toggleModal();
-    console.log('Current state is'+JSON.stringify(values));
-    alert('Current State is: ' + JSON.stringify(values));
+    this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+    alert('cuur'+JSON.stringify(values));
   }
 
 
@@ -141,11 +141,11 @@ class CommentForm extends Component{
                 </Control.select>
               </Row>
               <Row className='form-group'>
-                <Label htmlFor='name'><strong>Your Name</strong></Label>
-                <Control.text className='form-control' model='.name' name='name' id='name' placeholder='Enter name' validators={{required,maxLength:maxLength(15),minLength:minLength(3)}}/>
+                <Label htmlFor='author'><strong>Your Name</strong></Label>
+                <Control.text className='form-control' model='.author' name='author' id='author' placeholder='Enter name' validators={{required,maxLength:maxLength(15),minLength:minLength(3)}}/>
                 <Errors
                   className='text-danger'
-                  model='.name'
+                  model='.author'
                   show='touched'
                   messages={{
                     required:'Please enter name',
