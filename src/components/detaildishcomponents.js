@@ -34,7 +34,7 @@ import {baseUrl} from '../shared/baseUrl';
     );
   }
 
-  function RenderComments({dishcomments,addComment, dishId}) {
+  function RenderComments({dishcomments,postComment, dishId}) {
     const Comments = dishcomments.map((commentss)=>{
       return (
         <ul class = "list-unstyled">
@@ -57,7 +57,7 @@ import {baseUrl} from '../shared/baseUrl';
       <div className='col-12 col-md-5 m-1'>
         <h4>Comments</h4>
         {Comments}
-        <CommentForm dishId={dishId} addComment={addComment}/>
+        <CommentForm dishId={dishId} postComment={postComment}/>
 
       </div>
     );
@@ -99,7 +99,7 @@ import {baseUrl} from '../shared/baseUrl';
           </div>
           <div className="row">
             <RenderDish dish={props.dish}/>
-            <RenderComments dishcomments={props.comments} addComment={props.addComment} dishId={props.dish.id}/>
+            <RenderComments dishcomments={props.comments} postComment={props.postComment} dishId={props.dish.id}/>
           </div>
         </div>
         
@@ -133,7 +133,7 @@ class CommentForm extends Component{
   }
   handleSubmit(values){
     this.toggleModal();
-    this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+    this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     alert('cuur'+JSON.stringify(values));
   }
 
