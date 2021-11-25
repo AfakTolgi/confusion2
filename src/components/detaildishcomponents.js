@@ -18,18 +18,23 @@ import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './Loadingcomponent';
 import {baseUrl} from '../shared/baseUrl';
-
+import {Fade, Stagger, FadeTransform} from 'react-animation-components';
   
   function RenderDish({dish}) {
     return(
       <div className="col-12 col-md-5 m-1">
-        <Card>
-          <CardImg top src={baseUrl+dish.image} alt={dish.name} />
-          <CardBody>
-            <CardTitle>{dish.name}</CardTitle>
-            <CardText>{dish.description}</CardText>
-          </CardBody>
-        </Card>
+        <FadeTransform in 
+          transformProps={{
+            exitTransform: 'scale(0.5) translateY(-50%)'
+          }}>
+          <Card>
+            <CardImg top src={baseUrl+dish.image} alt={dish.name} />
+            <CardBody>
+              <CardTitle>{dish.name}</CardTitle>
+              <CardText>{dish.description}</CardText>
+            </CardBody>
+          </Card>
+        </FadeTransform>
       </div>
     );
   }
@@ -38,17 +43,19 @@ import {baseUrl} from '../shared/baseUrl';
     const Comments = dishcomments.map((commentss)=>{
       return (
         <ul class = "list-unstyled">
-          <li key={commentss.id}>
-            <p>{commentss.comment}</p>
-            <p>-- {commentss.author},
-            &nbsp;
-            {new Intl.DateTimeFormat('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: '2-digit'
-            }).format(new Date(commentss.date))}
-            </p>
-          </li>
+          <Fade in>
+            <li key={commentss.id}>
+              <p>{commentss.comment}</p>
+              <p>-- {commentss.author},
+              &nbsp;
+              {new Intl.DateTimeFormat('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: '2-digit'
+              }).format(new Date(commentss.date))}
+              </p>
+            </li>
+          </Fade>
         </ul>
       );
 
@@ -56,7 +63,9 @@ import {baseUrl} from '../shared/baseUrl';
     return (
       <div className='col-12 col-md-5 m-1'>
         <h4>Comments</h4>
-        {Comments}
+        <Stagger in>
+          {Comments}
+        </Stagger>
         <CommentForm dishId={dishId} postComment={postComment}/>
 
       </div>
