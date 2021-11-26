@@ -7,7 +7,7 @@ export const Comments = (state = {
     switch (action.type) {
         case ActionTypes.ADD_COMMENTS:
             return {...state, errMess: null, comments: action.payload};
-        case ActionTypes.DISHES_FAILED:
+        case ActionTypes.COMMENTS_FAILED:
             return {...state, errMess: action.payload};
         case ActionTypes.ADD_COMMENT:
             var comment = action.payload;

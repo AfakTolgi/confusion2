@@ -47,7 +47,7 @@ function Home(props){
           <RenderCard items ={props.promotion} isLoading={props.promoLoading} errMess ={props.promoErrMess}/>
         </div>
         <div className="col-12 col-md m-1">
-          <RenderCard items ={props.leader}/>
+          <RenderCard items ={props.leader} isLoading={props.leaderLoading} errMess ={props.leaderErrMess}/>
         </div>
       </div>
     </div>
